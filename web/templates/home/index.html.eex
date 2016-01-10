@@ -1,11 +1,10 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome, %{name}", name: "Kyle" %></h2>
-  <p class="lead">Here you can see your individual needs and wants!</p>
+  <h2><%= gettext "%{name}'s Overview", name: "Kyle" %></h2>
 </div>
 
 <div class="row marketing">
   <div class="col-lg-6">
-    <h4>Your Needs</h4>
+    <h4><%= link "Your Needs", to: needs_path(@conn, :index) %></h4>
     <ul>
 
 <%= for needs <- @needs do %>
@@ -16,7 +15,7 @@
   </div>
 
   <div class="col-lg-6">
-    <h4>Your Wants</h4>
+    <h4><%= link "Your Wants", to: wants_path(@conn, :index) %></h4>
     <ul>
 <%= for wants <- @wants do %>
       <li><%= wants.title %></li>
@@ -24,3 +23,4 @@
     </ul>
   </div>
 </div>
+

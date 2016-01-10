@@ -1,4 +1,4 @@
-<h2>New want</h2>
+<h2>New Want</h2>
 
 <%= render "form.html", changeset: @changeset,
                         action: wants_path(@conn, :create) %>
