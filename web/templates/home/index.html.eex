@@ -1,0 +1,26 @@
+<div class="jumbotron">
+  <h2><%= gettext "Welcome, %{name}", name: "Kyle" %></h2>
+  <p class="lead">Here you can see your individual needs and wants!</p>
+</div>
+
+<div class="row marketing">
+  <div class="col-lg-6">
+    <h4>Your Needs</h4>
+    <ul>
+
+<%= for needs <- @needs do %>
+      <li><%= needs.title %></li>
+<% end %>
+
+    </ul>
+  </div>
+
+  <div class="col-lg-6">
+    <h4>Your Wants</h4>
+    <ul>
+<%= for wants <- @wants do %>
+      <li><%= wants.title %></li>
+<% end %>
+    </ul>
+  </div>
+</div>

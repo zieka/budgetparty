@@ -18,6 +18,8 @@ defmodule Budgetparty.Router do
 
     get "/", PageController, :index
 
+    get "/home", HomeController, :index
+
     resources "/wants", WantsController
     resources "/needs", NeedsController
 
