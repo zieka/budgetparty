@@ -17,6 +17,10 @@ defmodule Budgetparty.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
+    resources "/wants", WantsController
+    resources "/needs", NeedsController
+
   end
 
   # Other scopes may use custom stacks.

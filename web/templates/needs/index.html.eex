@@ -1,0 +1,36 @@
+<h2>Listing needs</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Link</th>
+      <th>Time cost</th>
+      <th>Financial cost</th>
+      <th>Frequency</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for needs <- @needs do %>
+    <tr>
+      <td><%= needs.title %></td>
+      <td><%= needs.description %></td>
+      <td><%= needs.link %></td>
+      <td><%= needs.time_cost %></td>
+      <td><%= needs.financial_cost %></td>
+      <td><%= needs.frequency %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: needs_path(@conn, :show, needs), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New needs", to: needs_path(@conn, :new) %>

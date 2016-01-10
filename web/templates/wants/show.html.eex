@@ -1,0 +1,38 @@
+<h2>Show wants</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @wants.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @wants.description %>
+  </li>
+
+  <li>
+    <strong>Link:</strong>
+    <%= @wants.link %>
+  </li>
+
+  <li>
+    <strong>Time cost:</strong>
+    <%= @wants.time_cost %>
+  </li>
+
+  <li>
+    <strong>Financial cost:</strong>
+    <%= @wants.financial_cost %>
+  </li>
+
+  <li>
+    <strong>Frequency:</strong>
+    <%= @wants.frequency %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: wants_path(@conn, :edit, @wants) %>
+<%= link "Back", to: wants_path(@conn, :index) %>

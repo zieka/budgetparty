@@ -1,0 +1,36 @@
+<h2>Listing wants</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Link</th>
+      <th>Time cost</th>
+      <th>Financial cost</th>
+      <th>Frequency</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for wants <- @wants do %>
+    <tr>
+      <td><%= wants.title %></td>
+      <td><%= wants.description %></td>
+      <td><%= wants.link %></td>
+      <td><%= wants.time_cost %></td>
+      <td><%= wants.financial_cost %></td>
+      <td><%= wants.frequency %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: wants_path(@conn, :show, wants), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: wants_path(@conn, :edit, wants), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: wants_path(@conn, :delete, wants), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New wants", to: wants_path(@conn, :new) %>

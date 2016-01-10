@@ -1,0 +1,38 @@
+<h2>Show needs</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @needs.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @needs.description %>
+  </li>
+
+  <li>
+    <strong>Link:</strong>
+    <%= @needs.link %>
+  </li>
+
+  <li>
+    <strong>Time cost:</strong>
+    <%= @needs.time_cost %>
+  </li>
+
+  <li>
+    <strong>Financial cost:</strong>
+    <%= @needs.financial_cost %>
+  </li>
+
+  <li>
+    <strong>Frequency:</strong>
+    <%= @needs.frequency %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: needs_path(@conn, :edit, @needs) %>
+<%= link "Back", to: needs_path(@conn, :index) %>
