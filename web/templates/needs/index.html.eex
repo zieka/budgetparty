@@ -12,13 +12,11 @@
     </tr>
   </thead>
   <tbody>
-<% time_total = "not implemented" %>
-<% financial_total = "not implemented" %>
 <%= for needs <- @needs do %>
     <tr>
       <td><%= needs.title %></td>
-      <td><%= needs.time_cost %></td>
-      <td fincost><%= needs.financial_cost %></td>
+      <td class='time_cost'><%= needs.time_cost %></td>
+      <td class='fin_cost'><%= needs.financial_cost %></td>
       <td><%= needs.frequency %></td>
 
       <td class="text-right">
@@ -31,8 +29,8 @@
   </tbody>
   <tfoot>
       <td>Total:</td>
-      <td><%= time_total %></td>
-      <td><%= financial_total %></td>
+      <td class='time_total'>error</td>
+      <td class='fin_total'>error</td>
       <td></td>
   </tfoot>
 
@@ -41,3 +39,30 @@
 </table>
 
 <%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default btn-xs" %>
+
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+  var fin_total = 0;
+  var time_total = 0;
+
+  $(".fin_cost").each(function() {
+    var val = $.trim( $(this).text() );
+
+    if ( val ) {
+      val = parseFloat( val.replace( /^\$/, "" ) );
+      fin_total += !isNaN( val ) ? val : 0;
+    }
+  });
+
+  $(".time_cost").each(function() {
+    var val = $.trim( $(this).text() );
+    if ( val ) {
+      val = parseFloat( val.replace( /^\$/, "" ) );
+      time_total += !isNaN( val ) ? val : 0;
+    }
+  });
+
+  $(".fin_total").text(fin_total);
+  $(".time_total").text(time_total);
+</script>

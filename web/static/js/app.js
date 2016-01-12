@@ -20,10 +20,10 @@ import "deps/phoenix_html/web/static/js/phoenix_html"
 
 // import socket from "./socket"
 
-import { Greet } from "web/static/js/greeter";
+import { Total } from "web/static/js/test";
 
 export var App = {
   run: function(){
-    Greet.greet()
+    Total.test()
   }
 }
