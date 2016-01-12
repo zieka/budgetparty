@@ -1,6 +1,6 @@
 <div class="jumbotron">
-
-  <p>Here are your current wants and needs</p>
+  <h3><%= gettext "Welcome %{name}", name: "Kyle" %></h3>
+  <p class="fortune"></p>
 </div>
 
 <div class="row marketing">
@@ -61,3 +61,26 @@
   </div>
 </div>
 
+<script type="text/javascript">
+
+  function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  var request = new XMLHttpRequest();
+
+  request.open('GET', 'http://fortunecookieapi.com/v1/fortunes?limit=1&skip='+ getRandomInt(1,500));
+
+  request.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      var obj = JSON.parse(this.responseText)
+      $(".fortune").text('"'+obj[0].message+'"');
+    }
+    else {
+      $(".fortune").text("Here are your needs and wants");
+    }
+  };
+
+  request.send();
+
+</script>
