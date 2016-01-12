@@ -1,26 +1,63 @@
 <div class="jumbotron">
   <h2><%= gettext "%{name}'s Overview", name: "Kyle" %></h2>
+  <p>Here are your current wants and needs</p>
 </div>
 
 <div class="row marketing">
   <div class="col-lg-6">
-    <h4><%= link "Your Needs", to: needs_path(@conn, :index) %></h4>
-    <ul>
+    <h3><%= link "Your Needs", to: needs_path(@conn, :index) %></h3>
 
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Need</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
 <%= for needs <- @needs do %>
-      <li><%= needs.title %></li>
+    <tr>
+      <td><%= needs.title %></td>
+      <td class="text-right">
+        <%= link "Show Details", to: needs_path(@conn, :show, needs), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
 <% end %>
+  </tbody>
+</table>
 
-    </ul>
+<%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default btn-xs" %>
   </div>
 
   <div class="col-lg-6">
-    <h4><%= link "Your Wants", to: wants_path(@conn, :index) %></h4>
-    <ul>
+    <h3><%= link "Your Wants", to: wants_path(@conn, :index) %></h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Want</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
 <%= for wants <- @wants do %>
-      <li><%= wants.title %></li>
+    <tr>
+      <td><%= wants.title %></td>
+      <td class="text-right">
+        <%= link "Show", to: wants_path(@conn, :show, wants), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: wants_path(@conn, :edit, wants), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: wants_path(@conn, :delete, wants), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
 <% end %>
-    </ul>
+  </tbody>
+</table>
+
+<%= link "Add a new Want", to: wants_path(@conn, :new), class: "btn btn-default btn-xs"  %>
+
   </div>
 </div>
 

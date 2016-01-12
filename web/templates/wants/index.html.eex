@@ -36,4 +36,4 @@
 
 </table>
 
-<%= link "Add a new Want", to: wants_path(@conn, :new) %>
+<%= link "Add a new Want", to: wants_path(@conn, :new), class: "btn btn-default btn-xs"  %>

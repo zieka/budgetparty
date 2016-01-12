@@ -19,7 +19,9 @@
             <li><%= link "Home", to: home_path(@conn, :index) %></li>
           </ul>
         </nav>
-        <span class="logo"></span>
+        <span class="logo">
+          <img class="logo" src="/images/budgetparty.png">
+        </span>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

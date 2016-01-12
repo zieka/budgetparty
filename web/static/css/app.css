@@ -22,14 +22,24 @@ form.link, form.button {
 .header {
   border-bottom: 1px solid #e5e5e5;
 }
-.logo {
+.logo{
+  display:block;
+  width:100%;
+  margin-bottom: 1em;
+}
+.logo img{
+  width:400px;
+  max-width:100%
+}
+/*.logo {
   width: 519px;
   height: 71px;
   display: inline-block;
   margin-bottom: 1em;
   background-image: url("/images/budgetparty.png");
-  background-size: 519px 71px;
-}
+  background-size: 65% 65%;
+  background-repeat: no-repeat;
+}*/
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
