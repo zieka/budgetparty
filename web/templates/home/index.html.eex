@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h2><%= gettext "%{name}'s Overview", name: "Kyle" %></h2>
+
   <p>Here are your current wants and needs</p>
 </div>
 
@@ -20,7 +20,7 @@
     <tr>
       <td><%= needs.title %></td>
       <td class="text-right">
-        <%= link "Show Details", to: needs_path(@conn, :show, needs), class: "btn btn-default btn-xs" %>
+        <%= link "Details", to: needs_path(@conn, :show, needs), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
@@ -47,7 +47,7 @@
     <tr>
       <td><%= wants.title %></td>
       <td class="text-right">
-        <%= link "Show", to: wants_path(@conn, :show, wants), class: "btn btn-default btn-xs" %>
+        <%= link "Details", to: wants_path(@conn, :show, wants), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: wants_path(@conn, :edit, wants), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: wants_path(@conn, :delete, wants), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
