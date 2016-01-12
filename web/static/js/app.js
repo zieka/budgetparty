@@ -19,3 +19,11 @@ import "deps/phoenix_html/web/static/js/phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+import { Greet } from "web/static/js/greeter";
+
+export var App = {
+  run: function(){
+    Greet.greet()
+  }
+}
