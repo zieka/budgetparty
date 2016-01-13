@@ -5,6 +5,14 @@
 # is restricted to this project.
 use Mix.Config
 
+config :budgetparty, Budgetparty.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "budgetparty_repo",
+  username: "user",
+  password: "pass",
+  hostname: "localhost"
+
+
 # Configures the endpoint
 config :budgetparty, Budgetparty.Endpoint,
   url: [host: "localhost"],

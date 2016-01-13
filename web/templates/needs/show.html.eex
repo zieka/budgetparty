@@ -32,6 +32,11 @@
     <%= @needs.frequency %>
   </li>
 
+  <li>
+    <strong>owner_id:</strong>
+    <%= @needs.owner_id %>
+  </li>
+
 </ul>
 
 <%= link "Edit", to: needs_path(@conn, :edit, @needs) %>
