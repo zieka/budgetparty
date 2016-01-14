@@ -23,6 +23,8 @@ defmodule Budgetparty.Router do
     resources "/wants", WantsController
     resources "/needs", NeedsController
 
+    resources "/registration", RegistrationController, only: [:new, :create]
+
   end
 
   # Other scopes may use custom stacks.
