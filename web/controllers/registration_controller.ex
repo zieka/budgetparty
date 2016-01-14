@@ -14,8 +14,7 @@ defmodule Budgetparty.RegistrationController do
     	{:ok, changeset} ->
 	      conn
       	|> put_flash(:info, "Your account was created")
-      	|> redirect(to: "/posts")
-
+      	|> redirect(to: "/home")
     	{:error, changeset} ->
     		conn
 	      |> put_flash(:info, "Unable to create account")

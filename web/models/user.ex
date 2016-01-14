@@ -4,11 +4,12 @@ defmodule Budgetparty.User do
   schema "users" do
     field :email, :string
     field :crypted_password, :string
+    field :password, :string, virtual: true
 
     timestamps
   end
 
-  @required_fields ~w(email crypted_password)
+  @required_fields ~w(email password)
   @optional_fields ~w()
 
   @doc """
@@ -21,5 +22,7 @@ defmodule Budgetparty.User do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> unique_constraint(:email)
+    |> validate_format(:email, ~r/@/)
+    |> validate_length(:password, min: 6)
   end
 end
