@@ -5,8 +5,11 @@ defmodule Budgetparty.HomeController do
   alias Budgetparty.Wants
 
   def index(conn, _params) do
-  	needs = Repo.all(Needs)
-  	wants = Repo.all(Wants)
+  	query = from(n in Needs, where: n.owner_id == "placeholder")
+  	query2 = from(w in Wants, where: w.owner_id == "placeholder")
+
+  	needs = Repo.all(query)
+  	wants = Repo.all(query2)
     render(conn, "index.html", needs: needs, wants: wants)
   end
 end

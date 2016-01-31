@@ -36,14 +36,19 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :frequency, class: "control-label" %>
-    <%= text_input f, :frequency, class: "form-control" %>
+    <%= label f, :frequency, class: "control-label" %></br>
+    <%= select f, :frequency,
+                    ["One Time Payment",
+                     "Daily",
+                     "Weekly",
+                     "Monthly",
+                     "Yearly"],
+                  class: "form-control" %>
     <%= error_tag f, :frequency %>
   </div>
 
   <div class="form-group">
-    <%= label f, :owner_id, class: "control-label" %>
-    <%= text_input f, :owner_id, class: "form-control" %>
+    <%= hidden_input f, :owner_id, value: "placeholder", class: "form-control" %>
     <%= error_tag f, :owner_id %>
   </div>
 
