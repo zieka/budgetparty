@@ -1,7 +1,10 @@
+<%= if current_user(@conn).email == @needs.owner_id do %>
 <h2>Edit Need</h2>
-
 <%= render "form.html", changeset: @changeset,
                         action: needs_path(@conn, :update, @needs),
                         user: current_user(@conn).email  %>
 
 <%= link "Back", to: needs_path(@conn, :index) %>
+<% else %>
+	<h2>Don't be evil.</h2>
+<% end %>

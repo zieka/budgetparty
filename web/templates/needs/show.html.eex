@@ -1,3 +1,4 @@
+<%= if current_user(@conn).email == @needs.owner_id do %>
 <h2>Details on Need</h2>
 
 <ul>
@@ -41,3 +42,6 @@
 
 <%= link "Edit", to: needs_path(@conn, :edit, @needs) %>
 <%= link "Back", to: needs_path(@conn, :index) %>
+<% else %>
+  <h2>Don't be evil.</h2>
+<% end %>
