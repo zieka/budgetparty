@@ -52,7 +52,7 @@ defmodule Budgetparty.WantsController do
     case Repo.update(changeset) do
       {:ok, wants} ->
         conn
-        |> put_flash(:info, "Wants updated successfully.")
+        |> put_flash(:info, "Want updated successfully.")
         |> redirect(to: wants_path(conn, :show, wants))
       {:error, changeset} ->
         render(conn, "edit.html", wants: wants, changeset: changeset)
@@ -67,7 +67,7 @@ defmodule Budgetparty.WantsController do
     Repo.delete!(wants)
 
     conn
-    |> put_flash(:info, "Wants deleted successfully.")
+    |> put_flash(:info, "Want deleted successfully.")
     |> redirect(to: wants_path(conn, :index))
   end
 end
