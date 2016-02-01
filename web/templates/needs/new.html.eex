@@ -1,6 +1,7 @@
 <h2>New Need</h2>
 
 <%= render "form.html", changeset: @changeset,
-                        action: needs_path(@conn, :create) %>
+                        action: needs_path(@conn, :create),
+                        user: current_user(@conn).email %>
 
 <%= link "Back", to: needs_path(@conn, :index) %>

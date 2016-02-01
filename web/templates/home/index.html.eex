@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h3><%= gettext "Welcome %{name}", name: "Kyle" %></h3>
+  <h3><%= gettext "Welcome %{name}", name: "" %></h3>
   <p class="fortune"></p>
 </div>
 

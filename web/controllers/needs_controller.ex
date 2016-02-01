@@ -1,12 +1,18 @@
 defmodule Budgetparty.NeedsController do
   use Budgetparty.Web, :controller
 
+  alias Budgetparty.User
   alias Budgetparty.Needs
 
   plug :scrub_params, "needs" when action in [:create, :update]
 
   def index(conn, _params) do
-    needs = Repo.all(Needs)
+    id = Plug.Conn.get_session(conn, :current_user)
+    if id do
+      user_email = Budgetparty.Repo.get(User, id).email
+    end
+    query = from(n in Needs, where: n.owner_id == ^user_email)
+    needs = Repo.all(query)
     render(conn, "index.html", needs: needs)
   end
 

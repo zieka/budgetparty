@@ -36,6 +36,7 @@ defmodule Budgetparty.Web do
 
       import Budgetparty.Router.Helpers
       import Budgetparty.Gettext
+      import Budgetparty.Session, only: [current_user: 1, logged_in?: 1]
     end
   end
 
@@ -52,6 +53,7 @@ defmodule Budgetparty.Web do
       import Budgetparty.Router.Helpers
       import Budgetparty.ErrorHelpers
       import Budgetparty.Gettext
+      import Budgetparty.Session, only: [current_user: 1, logged_in?: 1]
     end
   end
 
