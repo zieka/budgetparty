@@ -9,7 +9,6 @@ defmodule Budgetparty.NeedsController do
   def index(conn, _params) do
     user_email = current_uid(conn)
     query = from(n in Needs, where: n.owner_id == ^user_email)
-
     needs = Repo.all(query)
     render(conn, "index.html", needs: needs)
   end
