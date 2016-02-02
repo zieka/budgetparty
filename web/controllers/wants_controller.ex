@@ -60,7 +60,7 @@ defmodule Budgetparty.WantsController do
   def update(conn, %{"id" => id, "wants" => wants_params}) do
     wants = Repo.get!(Wants, id)
 
-    if changeset.changes.owner_id == current_uid(conn) do
+    if wants.owner_id == current_uid(conn) do
 
       changeset = Wants.changeset(wants, wants_params)
       case Repo.update(changeset) do
