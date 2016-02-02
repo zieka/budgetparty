@@ -1,4 +1,6 @@
-<h1>Create an account</h1>
+<h3>Create an account</h3>
+
+By registering you understand that this site is in an alpha/beta testing phase.  While this site does not share or sell your data; occasionally there will be unscheduled maintenance that can result in loss of data but we will try to keep that to a minimum.
 
 <%= form_for @changeset, registration_path(@conn, :create), fn f -> %>
   <%= if f.errors != [] do %>
@@ -11,18 +13,18 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <label>Email</label>
-    <%= email_input f, :email, class: "form-control" %>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Email</span>
+    <%= email_input f, :email, class: "form-control", placeholder: "example@example.com"  %>
   </div>
-
-  <div class="form-group">
-    <label>Password</label>
-    <%= password_input f, :password, class: "form-control" %>
+</br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Password</span>
+    <%= password_input f, :password, class: "form-control", placeholder: "Must be at least 6 characters" %>
   </div>
-
+</br>
   <div class="form-group">
     <%= submit "Signup", class: "btn btn-primary" %>
   </div>
+</br>
 <% end %>
