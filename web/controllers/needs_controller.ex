@@ -42,7 +42,7 @@ defmodule Budgetparty.NeedsController do
     if needs.owner_id == current_uid(conn) do
       render(conn, "show.html", needs: needs)
     else
-       conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/") |> halt
+      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/") |> halt
     end
   end
 
@@ -53,7 +53,7 @@ defmodule Budgetparty.NeedsController do
     if needs.owner_id == current_uid(conn) do
       render(conn, "edit.html", needs: needs, changeset: changeset)
     else
-       conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/") |> halt
+      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/") |> halt
     end
   end
 
