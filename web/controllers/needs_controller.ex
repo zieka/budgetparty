@@ -59,9 +59,10 @@ defmodule Budgetparty.NeedsController do
 
   def update(conn, %{"id" => id, "needs" => needs_params}) do
     needs = Repo.get!(Needs, id)
-    changeset = Needs.changeset(needs, needs_params)
 
-    if changeset.changes.owner_id == current_uid(conn) do
+    if needs.owner_id == current_uid(conn) do
+
+      changeset = Needs.changeset(needs, needs_params)
       case Repo.update(changeset) do
         {:ok, needs} ->
           conn
