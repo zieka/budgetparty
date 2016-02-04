@@ -8,6 +8,7 @@
 body, form, ul, table {
   margin-top: 20px;
   margin-bottom: 20px;
+  font-family: "Helvetica Neue"
 }
 
 /* Phoenix flash messages */
@@ -46,6 +47,7 @@ form.link, form.button {
 .marketing {
   padding-right: 15px;
   padding-left: 15px;
+
 }
 
 /* Customize container */
@@ -62,6 +64,7 @@ form.link, form.button {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  background-color: #F0F0F0;
 }
 
 /* Supporting marketing content */
