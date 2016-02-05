@@ -2,7 +2,9 @@ defmodule Budgetparty.SessionController do
   use Budgetparty.Web, :controller
 
   def new(conn, _params) do
-    render conn, "new.html"
+    conn
+    |> put_layout("signin.html")
+    |> render "new.html"
   end
 
   def create(conn, %{"session" => session_params}) do
@@ -15,6 +17,7 @@ defmodule Budgetparty.SessionController do
     	:error ->
       	conn
       	|> put_flash(:info, "Wrong email or password")
+        |> put_layout("signin.html")
       	|> render("new.html")
   	end
 	end

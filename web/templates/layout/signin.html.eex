@@ -13,11 +13,11 @@
 
 
 
-		<link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 
   </head>
 
-  <body  background="/images/abacus.jpg">
+  <body  background="/images/abacus_fade.jpg">
 
     <div class="site-wrapper">
       <div class="site-wrapper-inner">
@@ -28,34 +28,31 @@
           <div class="masthead">
             <div class="inner">
               <h3 class="masthead-brand"></h3>
-              <nav>
+              <nav role="navigation" >
                 <ul class="nav masthead-nav">
 
-          <%= if logged_in?(@conn) do %>
+<%= if logged_in?(@conn) do %>
 
             <li><%= link current_user(@conn).email, to: home_path(@conn, :index) %></li>
             <li><strong><%= button "Logout", to: session_path(@conn, :delete), method: :delete,  style: "background:none;
   border:0;"%></strong></li>
 
-          <% end %>
+<% end %>
 
                 </ul>
               </nav>
             </div>
           </div>
-
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
           <div class="inner cover">
-            <h1 class="cover-heading"><strong>Welcome to Budget Party</strong></h1>
-            <p class="lead">Personal budgeting made simple.</p>
-            <p class="lead">
 
-            <%= if logged_in?(@conn) do %>
-              <a href="/home" class="btn btn-lg btn-default">Home</a>
-            <% else %>
-              <a href="/login" class="btn btn-lg btn-default">Login</a>
-            <% end %>
-
-            </p>
+<%= if logged_in?(@conn) do %>
+            <h1> You are aleady logged in! </h1>
+            <a href="/home" class="btn btn-lg btn-default">Home</a>
+<% else %>
+            <%= render @view_module, @view_template, assigns %>
+<% end %>
           </div>
 
           <div class="mastfoot">

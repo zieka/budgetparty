@@ -4,7 +4,10 @@ defmodule Budgetparty.RegistrationController do
 
   def new(conn, _params) do
     changeset = User.changeset(%User{})
-    render conn, changeset: changeset
+    conn
+    |> put_layout("signin.html")
+    |> render(changeset: changeset)
+   # render conn, changeset: changeset
   end
 
   def create(conn, %{"user" => user_params}) do
@@ -14,10 +17,11 @@ defmodule Budgetparty.RegistrationController do
     	{:ok, changeset} ->
 	      conn
       	|> put_flash(:info, "Your account was created")
-      	|> redirect(to: "/login?test")
+      	|> redirect(to: "/login")
     	{:error, changeset} ->
     		conn
 	      |> put_flash(:info, "Unable to create account")
+        |> put_layout("signin.html")
       	|> render("new.html", changeset: changeset)
   	end
 	end

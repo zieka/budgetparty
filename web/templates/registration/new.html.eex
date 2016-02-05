@@ -1,7 +1,3 @@
-<h3>Create an account</h3>
-
-By registering you understand that this site is in an alpha/beta testing phase.  While this site does not share or sell your data; occasionally there will be unscheduled maintenance that can result in loss of data but we will try to keep that to a minimum.
-
 <%= form_for @changeset, registration_path(@conn, :create), fn f -> %>
   <%= if f.errors != [] do %>
     <div class="alert alert-danger">
@@ -13,18 +9,24 @@ By registering you understand that this site is in an alpha/beta testing phase. 
       </ul>
     </div>
   <% end %>
+
+<h3>Create an account</h3>
+
+<p>By registering you understand that this site is in an alpha/beta testing phase.  While this site does not share or sell your data; occasionally there will be unscheduled maintenance that can result in loss of data but we will try to keep that to a minimum.</p>
+</br>
+
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">Email</span>
     <%= email_input f, :email, class: "form-control", placeholder: "example@example.com"  %>
   </div>
 </br>
   <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1">Password</span>
+    <span class="input-group-addon" id="basic-addon2">Password</span>
     <%= password_input f, :password, class: "form-control", placeholder: "Must be at least 6 characters" %>
   </div>
 </br>
   <div class="form-group">
-    <%= submit "Signup", class: "btn btn-primary" %>
+    <%= submit "Signup", class: "btn btn-lg btn-default" %>
   </div>
 </br>
 <% end %>
