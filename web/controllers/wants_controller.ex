@@ -7,6 +7,7 @@ defmodule Budgetparty.WantsController do
   plug :scrub_params, "wants" when action in [:create, :update]
 
   def index(conn, _params) do
+    validate(conn)
     user_email = current_uid(conn)
     query = from(w in Wants, where: w.owner_id == ^user_email)
 
@@ -15,11 +16,13 @@ defmodule Budgetparty.WantsController do
   end
 
   def new(conn, _params) do
+    validate(conn)
     changeset = Wants.changeset(%Wants{})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"wants" => wants_params}) do
+    validate(conn)
     changeset = Wants.changeset(%Wants{}, wants_params)
 
     if changeset.changes.owner_id == current_uid(conn) do
@@ -32,32 +35,35 @@ defmodule Budgetparty.WantsController do
           render(conn, "new.html", changeset: changeset)
       end
     else
-      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/") |> halt
+      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/home") |> halt
     end
   end
 
   def show(conn, %{"id" => id}) do
+    validate(conn)
     wants = Repo.get!(Wants, id)
 
     if wants.owner_id == current_uid(conn) do
       render(conn, "show.html", wants: wants)
     else
-      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/") |> halt
+      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/home") |> halt
     end
   end
 
   def edit(conn, %{"id" => id}) do
+    validate(conn)
     wants = Repo.get!(Wants, id)
     changeset = Wants.changeset(wants)
 
     if wants.owner_id == current_uid(conn) do
       render(conn, "edit.html", wants: wants, changeset: changeset)
     else
-      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/") |> halt
+      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/home") |> halt
     end
   end
 
   def update(conn, %{"id" => id, "wants" => wants_params}) do
+    validate(conn)
     wants = Repo.get!(Wants, id)
 
     if wants.owner_id == current_uid(conn) do
@@ -72,11 +78,12 @@ defmodule Budgetparty.WantsController do
           render(conn, "edit.html", wants: wants, changeset: changeset)
       end
     else
-      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/") |> halt
+      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/home") |> halt
     end
   end
 
   def delete(conn, %{"id" => id}) do
+    validate(conn)
     wants = Repo.get!(Wants, id)
 
     if wants.owner_id == current_uid(conn) do
@@ -88,7 +95,7 @@ defmodule Budgetparty.WantsController do
       |> put_flash(:info, "Want deleted successfully.")
       |> redirect(to: wants_path(conn, :index))
     else
-      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/") |> halt
+      conn |> put_flash(:error, "Don't be evil.") |> redirect(to: "/home") |> halt
     end
   end
 
@@ -96,6 +103,12 @@ defmodule Budgetparty.WantsController do
     uid = Plug.Conn.get_session(conn, :current_user)
     if uid do
       Budgetparty.Repo.get(User, uid).email
+    end
+  end
+
+  def validate(conn) do
+    if is_nil(current_uid(conn)) do
+      conn |> redirect(to: "/") |> halt
     end
   end
 end
