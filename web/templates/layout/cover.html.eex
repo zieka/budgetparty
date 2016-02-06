@@ -11,8 +11,6 @@
 
     <title>Budget Party</title>
 
-
-
 		<link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 
   </head>

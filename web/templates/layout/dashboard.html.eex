@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 <link rel="stylesheet" href="/css/dashboard.css">
   </head>
+
   <body style="
     background: #A3CACC;
 ">
@@ -43,31 +44,94 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="row" style="
-    background: #A3CACC;
-">
+      <div class="row" >
+
+
+
+
         <div class="col-sm-3 col-md-2 sidebar"
           style="
             background: rgb(115, 136, 158);
             width: 10%;
           ">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="/home">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="/needs">Needs</a></li>
-            <li><a href="/wants">Wants</a></li>
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Needs</a></li>
+            <li><a href="#">Wants</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
           <p>A fortune for you:</p><p class="fortune"></p>
 
-         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-6 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Needs</h4>
+              <span class="text">Solid Needs!</span>
+            </div>
+            <div class="col-xs-6 col-sm-6 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Wants</h4>
+              <span class="text">You want too many things</span>
+            </div>
+          </div>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+          <div class="col-lg-6">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Need</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
 
+<%= for needs <- @needs do %>
+
+                <tr>
+                  <td><%= needs.title %></td>
+                  <td class="text-right">
+                    <%= link "Details", to: needs_path(@conn, :show, needs), class: "btn btn-default btn-xs" %>
+                    <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
+                    <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+                  </td>
+                </tr>
+ <% end %>
+
+              </tbody>
+            </table>
+
+      <%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default btn-xs" %>
+
+          </div>
+
+          <div class="col-lg-6">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Need</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+
+<%= for needs <- @needs do %>
+
+                <tr>
+                  <td><%= needs.title %></td>
+                  <td class="text-right">
+                    <%= link "Details", to: needs_path(@conn, :show, needs), class: "btn btn-default btn-xs" %>
+                    <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
+                    <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+                  </td>
+                </tr>
+ <% end %>
+
+              </tbody>
+            </table>
+
+      <%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default btn-xs" %>
 
           </div>
         </div>
@@ -84,10 +148,6 @@
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-
-
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script>require("web/static/js/app").App.run()</script>
 
 <script type="text/javascript">
 

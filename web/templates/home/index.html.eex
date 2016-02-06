@@ -1,9 +1,21 @@
-<div class="jumbotron">
-  <h3><%= gettext "Welcome %{name}", name: "" %></h3>
-  <p class="fortune"></p>
-</div>
+<%#  dashboard circles %>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-6 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Needs</h4>
+              <span class="text">Solid Needs!</span>
+            </div>
+            <div class="col-xs-6 col-sm-6 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Wants</h4>
+              <span class="text">You want too many things</span>
+            </div>
+          </div>
 
 <div class="row marketing">
+
+<%# Needs list %>
   <div class="col-lg-6">
     <h3><%= link "Your Needs", to: needs_path(@conn, :index) %></h3>
 
@@ -31,6 +43,9 @@
 
 <%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default btn-xs" %>
   </div>
+
+
+<%# Wants list %>
 
   <div class="col-lg-6">
     <h3><%= link "Your Wants", to: wants_path(@conn, :index) %></h3>
