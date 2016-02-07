@@ -30,9 +30,8 @@
   <tbody>
 <%= for needs <- @needs do %>
     <tr>
-      <td><%= needs.title %></td>
+      <td><%= link needs.title, to: needs_path(@conn, :show, needs)%></td>
       <td class="text-right">
-        <%= link "Details", to: needs_path(@conn, :show, needs), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
@@ -41,7 +40,7 @@
   </tbody>
 </table>
 
-<%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default btn-xs" %>
+<%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default btn-small" %>
   </div>
 
 
@@ -60,9 +59,8 @@
   <tbody>
 <%= for wants <- @wants do %>
     <tr>
-      <td><%= wants.title %></td>
+      <td><%= link wants.title, to: wants_path(@conn, :show, wants)%></td>
       <td class="text-right">
-        <%= link "Details", to: wants_path(@conn, :show, wants), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: wants_path(@conn, :edit, wants), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: wants_path(@conn, :delete, wants), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
@@ -71,7 +69,7 @@
   </tbody>
 </table>
 
-<%= link "Add a new Want", to: wants_path(@conn, :new), class: "btn btn-default btn-xs"  %>
+<%= link "Add a new Want", to: wants_path(@conn, :new), class: "btn btn-default btn-small"  %>
 
   </div>
 </div>

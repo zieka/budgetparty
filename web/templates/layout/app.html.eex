@@ -14,7 +14,8 @@
 <link rel="stylesheet" href="/css/dashboard.css">
   </head>
   <body style="
-    background: #A3CACC;
+<%#     background: #A3CACC; %>
+    background: #91C5C7;
 ">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -43,14 +44,9 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="row" style="
-    background: #A3CACC;
-">
-        <div class="col-sm-3 col-md-2 sidebar"
-          style="
-            background: rgb(115, 136, 158);
-            width: 10%;
-          ">
+      <div class="row" style="background: #91C5C7;">
+        <div class="col-sm-3 col-md-1 sidebar"
+          style="background: rgb(115, 136, 158);">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="/home">Overview <span class="sr-only">(current)</span></a></li>
             <li><a href="/needs">Needs</a></li>
@@ -58,7 +54,7 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+
           <p>A fortune for you:</p><p class="fortune"></p>
 
          <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
