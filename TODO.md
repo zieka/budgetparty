@@ -7,6 +7,7 @@
         + co-habitation
         + birthday
         + weddings
+    - party chat using channels
 * Add ability to switch a need to a want and vice versa
 * Add Help button with intro.js
 
