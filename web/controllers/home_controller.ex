@@ -8,15 +8,29 @@ defmodule Budgetparty.HomeController do
   def index(conn, _params) do
     validate(conn)
 		user_email = current_uid(conn)
-  	query = from(n in Needs, where: n.owner_id == ^user_email)
-  	query2 = from(w in Wants, where: w.owner_id == ^user_email)
+
+    query = from(n in Needs, where: n.owner_id == ^user_email)
+    query2 = from(n in Needs, select: count(n.owner_id), where: n.owner_id == ^user_email)
+  	query3 = from(w in Wants, where: w.owner_id == ^user_email)
+    query4 = from(w in Wants, select: count(w.owner_id), where: w.owner_id == ^user_email)
+
 
   	needs = Repo.all(query)
-  	wants = Repo.all(query2)
+    needs_count =  Repo.one(query2)
+
+  	wants = Repo.all(query3)
+    wants_count =  Repo.one(query4)
+
     conn
     #|> put_layout("dashboard.html")
     #|> render( "index.html", needs: needs, wants: wants)
-    render(conn, "index.html", needs: needs, wants: wants)
+    render(conn, "index.html",
+            needs: needs,
+            needs_count: needs_count,
+            wants: wants,
+            wants_count: wants_count
+    )
+
   end
 
   def current_uid(conn) do

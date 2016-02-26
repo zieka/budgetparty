@@ -2,14 +2,52 @@
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-6 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                <h1 class="needs-count"><%= @needs_count %></h1>
               <h4>Needs</h4>
-              <span class="text">Solid Needs!</span>
+              <span class="text">
+                <%= cond do%>
+                <%  @needs_count < 1 -> %>
+                <%=  "Looks like you are getting started! What are your obligations?" %>
+                <%  @needs_count < 3 -> %>
+                <%=  "Life is easy when you only have a few needs!" %>
+                <%  @needs_count < 6 -> %>
+                <%=  "It's all about finding a balance" %>
+                <%  @needs_count < 8 -> %>
+                <%=  "Outstanding!" %>
+                <%  @needs_count < 13 -> %>
+                <%=  "This is a good amount!" %>
+                <%  @needs_count < 16 -> %>
+                <%=  "Might some of these be wants?" %>
+                <%  @needs_count < 20 -> %>
+                <%=  "Are you sure these are all needs?" %>
+                <% true -> %>
+                <%  "default" %>
+                <%end%>
+              </span>
             </div>
             <div class="col-xs-6 col-sm-6 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                <h1 class "wants-count"><%= @wants_count %></h1>
               <h4>Wants</h4>
-              <span class="text">You want too many things</span>
+              <span class="text">
+                <%= cond do%>
+                <%  @wants_count < 1 -> %>
+                <%=  "Looks like you are getting started! What are your ambitions?" %>
+                <%  @wants_count < 3 -> %>
+                <%=  "Life is easy when you are humble!"%>
+                <%  @wants_count < 6 -> %>
+                <%=  "It's all about finding a balance" %>
+                <%  @wants_count < 8 -> %>
+                <%=  "Outstanding!" %>
+                <%  @wants_count < 13 -> %>
+                <%=  "This is an execellent list!" %>
+                <%  @wants_count < 16 -> %>
+                <%=  "Might some of these be wants?" %>
+                <%  @wants_count < 20 -> %>
+                <%=  "Wow! You want a lot of things!" %>
+                <% true -> %>
+                <%  "default" %>
+                <%end%>
+              </span>
             </div>
           </div>
 
