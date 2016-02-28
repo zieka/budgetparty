@@ -27,12 +27,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Budget Party</a>
+          <a class="navbar-brand" href="/">Budget Party | </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-<%= if logged_in?(@conn) do %>
 
+<%= if logged_in?(@conn) do %>
             <li><a><%= current_user(@conn).email %></a></li>
             <li><a><strong><%= button "Logout", to: session_path(@conn, :delete), method: :delete,  style: "background:none;
   border:0;"%></strong></a></li>
@@ -48,9 +48,9 @@
         <div class="col-sm-3 col-md-1 sidebar"
           style="background: rgb(115, 136, 158);">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="/home">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="/needs">Needs</a></li>
-            <li><a href="/wants">Wants</a></li>
+            <li class="active"><a sidebar = "Overview" href="/home">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a sidebar = "Needs" href="/needs">Needs</a></li>
+            <li><a sidebar = "Wants" href="/wants">Wants</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -70,18 +70,7 @@
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-
-
+    <script src="<%= static_path(@conn, "/js/jquery.min.js") %>"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>require("web/static/js/app").App.run()</script>
 
@@ -108,6 +97,14 @@
   request.send();
 
 </script>
+
+<script>
+  $(".nav a").on("click", function() {
+    $(".nav").find(".active").removeClass("active");
+    $(this).parent().addClass("active");
+  });
+</script>
+
 
   </body>
 </html>

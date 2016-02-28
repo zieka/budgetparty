@@ -1,5 +1,5 @@
 Total =
-  test: -> console.log("test")
+  test: -> console.log("Welcome")
 
 module.exports =
 

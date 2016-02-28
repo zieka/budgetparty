@@ -12,26 +12,34 @@
     </tr>
   </thead>
   <tbody>
-<%= for needs <- @needs do %>
-    <tr>
-      <td><%= link needs.title, to: needs_path(@conn, :show, needs) %></td>
-      <td class='time_cost'><%= Float.to_string needs.time_cost, decimals: 2 %></td>
-      <td class='fin_cost'><%= Float.to_string needs.financial_cost, decimals: 2 %></td>
-      <td class='frequency'><%= needs.frequency %></td>
+    <%= for needs <- @needs do %>
+      <tr>
+        <td>
+          <%= link needs.title, to: needs_path(@conn, :show, needs) %>
+        </td>
+        <td class='time_cost'>
+          <%= Float.to_string needs.time_cost, decimals: 2 %>
+        </td>
+        <td class='fin_cost'>
+          <%= Float.to_string needs.financial_cost, decimals: 2 %>
+        </td>
+        <td class='frequency'>
+          <%= needs.frequency %>
+        </td>
 
-      <td class="text-right">
+        <td class="text-right">
 
-        <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
+          <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
+            <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        </td>
+      </tr>
+      <% end %>
   </tbody>
   <tfoot style="background: rgba(66, 139, 202, 0.38);">
-      <td>Total:</td>
-      <td class='time_total'></td>
-      <td class='fin_total'></td>
-      <td class='monthly'>per month</td>
+    <td>Total:</td>
+    <td class='time_total'></td>
+    <td class='fin_total'></td>
+    <td class='monthly'>per month</td>
   </tfoot>
 
 
@@ -39,3 +47,10 @@
 </table>
 
 <%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default" %>
+
+
+<script src="<%= static_path(@conn, "/js/jquery.min.js") %>"></script>
+<script type="text/javascript">
+      $(".nav").find(".active").removeClass("active");
+      $('li a[sidebar=Needs]').parent().addClass("active");
+</script>

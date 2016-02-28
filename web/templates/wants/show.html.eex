@@ -40,3 +40,9 @@
 
 <%= link "Edit", to: wants_path(@conn, :edit, @wants) %>
 <%= link "Back", to: wants_path(@conn, :index) %>
+
+<script src="<%= static_path(@conn, "/js/jquery.min.js") %>"></script>
+<script type="text/javascript">
+      $(".nav").find(".active").removeClass("active");
+      $('li a[sidebar=Wants]').parent().addClass("active");
+</script>

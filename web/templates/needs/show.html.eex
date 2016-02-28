@@ -45,3 +45,10 @@
 <% else %>
   <h2>Don't be evil.</h2>
 <% end %>
+
+
+<script src="<%= static_path(@conn, "/js/jquery.min.js") %>"></script>
+<script type="text/javascript">
+      $(".nav").find(".active").removeClass("active");
+      $('li a[sidebar=Needs]').parent().addClass("active");
+</script>

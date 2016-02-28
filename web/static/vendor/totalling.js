@@ -5,7 +5,7 @@ function total_per_month(cost_col,total_col) {
         var cost = $(this).find(cost_col).text();
         if (!isNaN(cost) && cost.length !== 0) {
             cost = parseFloat(cost);
-            console.log(cost)
+            // console.log(cost)
         };
         var freq = $(this).find('.frequency').text();
         switch(freq) {
@@ -27,7 +27,7 @@ function total_per_month(cost_col,total_col) {
           default:
               freq = 1;
         };
-        console.log(freq)
+        // console.log(freq)
         row_cost = row_cost + (cost*freq);
     });
 return $(total_col).text(row_cost.toFixed(2));

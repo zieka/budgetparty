@@ -1,10 +1,8 @@
-<%#  dashboard circles %>
-
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-6 placeholder">
-                <h1 class="needs-count"><%= @needs_count %></h1>
-              <h4>Needs</h4>
-              <span class="text">
+<div class="row placeholders">
+  <div class="col-xs-6 col-sm-6 placeholder">
+    <h1 class="needs-count"><%= @needs_count %></h1>
+    <h4>Needs</h4>
+    <span class="text">
                 <%= cond do%>
                 <%  @needs_count < 1 -> %>
                 <%=  "Looks like you are getting started! What are your obligations?" %>
@@ -24,11 +22,11 @@
                 <%  "default" %>
                 <%end%>
               </span>
-            </div>
-            <div class="col-xs-6 col-sm-6 placeholder">
-                <h1 class "wants-count"><%= @wants_count %></h1>
-              <h4>Wants</h4>
-              <span class="text">
+  </div>
+  <div class="col-xs-6 col-sm-6 placeholder">
+    <h1 class "wants-count"><%= @wants_count %></h1>
+    <h4>Wants</h4>
+    <span class="text">
                 <%= cond do%>
                 <%  @wants_count < 1 -> %>
                 <%=  "Looks like you are getting started! What are your ambitions?" %>
@@ -48,90 +46,69 @@
                 <%  "default" %>
                 <%end%>
               </span>
-            </div>
-          </div>
-
-<div class="row marketing">
-
-<%# Needs list %>
-  <div class="col-lg-6">
-    <h3><%= link "Your Needs", to: needs_path(@conn, :index) %></h3>
-
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Need</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for needs <- @needs do %>
-    <tr>
-      <td><%= link needs.title, to: needs_path(@conn, :show, needs)%></td>
-      <td class="text-right">
-        <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default btn-small" %>
-  </div>
-
-
-<%# Wants list %>
-
-  <div class="col-lg-6">
-    <h3><%= link "Your Wants", to: wants_path(@conn, :index) %></h3>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Want</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for wants <- @wants do %>
-    <tr>
-      <td><%= link wants.title, to: wants_path(@conn, :show, wants)%></td>
-      <td class="text-right">
-        <%= link "Edit", to: wants_path(@conn, :edit, wants), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: wants_path(@conn, :delete, wants), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<%= link "Add a new Want", to: wants_path(@conn, :new), class: "btn btn-default btn-small"  %>
-
   </div>
 </div>
 
-<script type="text/javascript">
+<div class="row marketing">
 
-  function getRandomInt (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  <%# Needs list %>
+    <div class="col-lg-6">
+      <h3><%= link "Your Needs", to: needs_path(@conn, :index) %></h3>
 
-  var request = new XMLHttpRequest();
 
-  request.open('GET', 'http://fortunecookieapi.com/v1/fortunes?limit=1&skip='+ getRandomInt(1,500));
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= for needs <- @needs do %>
+            <tr>
+              <td>
+                <%= link needs.title, to: needs_path(@conn, :show, needs)%>
+              </td>
+              <td class="text-right">
+                <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
+                  <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+      <%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default btn-small" %>
+    </div>
 
-  request.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      var obj = JSON.parse(this.responseText)
-      $(".fortune").text('"'+obj[0].message+'"');
-    }
-    else {
-      $(".fortune").text("Here are your needs and wants");
-    }
-  };
 
-  request.send();
+    <%# Wants list %>
 
-</script>
+      <div class="col-lg-6">
+        <h3><%= link "Your Wants", to: wants_path(@conn, :index) %></h3>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= for wants <- @wants do %>
+              <tr>
+                <td>
+                  <%= link wants.title, to: wants_path(@conn, :show, wants)%>
+                </td>
+                <td class="text-right">
+                  <%= link "Edit", to: wants_path(@conn, :edit, wants), class: "btn btn-default btn-xs" %>
+                  <%= link "Delete", to: wants_path(@conn, :delete, wants), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+                </td>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+
+        <%= link "Add a new Want", to: wants_path(@conn, :new), class: "btn btn-default btn-small"  %>
+
+      </div>
+</div>

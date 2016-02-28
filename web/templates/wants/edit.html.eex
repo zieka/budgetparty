@@ -5,3 +5,9 @@
                         user: current_user(@conn).email  %>
 
 <%= link "Back", to: wants_path(@conn, :index) %>
+
+<script src="<%= static_path(@conn, "/js/jquery.min.js") %>"></script>
+<script type="text/javascript">
+      $(".nav").find(".active").removeClass("active");
+      $('li a[sidebar=Wants]').parent().addClass("active");
+</script>

@@ -37,3 +37,9 @@
 </table>
 
 <%= link "Add a new Want", to: wants_path(@conn, :new), class: "btn btn-default"  %>
+
+<script src="<%= static_path(@conn, "/js/jquery.min.js") %>"></script>
+<script type="text/javascript">
+      $(".nav").find(".active").removeClass("active");
+      $('li a[sidebar=Wants]').parent().addClass("active");
+</script>
