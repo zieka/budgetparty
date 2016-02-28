@@ -67,7 +67,11 @@
           <%= for needs <- @needs do %>
             <tr>
               <td>
+                <%= if needs.img_url do %>
+                  <a href="<%= needs.link %>" ><img src="<%= needs.img_url %>" style="height: 40px;"%></a>
+                <%= else %>
                 <%= link needs.title, to: needs_path(@conn, :show, needs)%>
+                <%end%>
               </td>
               <td class="text-right">
                 <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
@@ -97,7 +101,11 @@
             <%= for wants <- @wants do %>
               <tr>
                 <td>
+                  <%= if wants.link do %>
+                  <a href="<%= wants.link %>" ><img src="<%= wants.img_url %>" style="height: 40px;"%></a>
+                  <%= else %>
                   <%= link wants.title, to: wants_path(@conn, :show, wants)%>
+                  <% end %>
                 </td>
                 <td class="text-right">
                   <%= link "Edit", to: wants_path(@conn, :edit, wants), class: "btn btn-default btn-xs" %>

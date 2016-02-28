@@ -12,15 +12,21 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :description, class: "control-label" %>
+    <%= label f, "Description (Optional)", class: "control-label" %>
     <%= textarea f, :description, class: "form-control" %>
     <%= error_tag f, :description %>
   </div>
 
   <div class="form-group">
-    <%= label f, :link, class: "control-label" %>
+    <%= label f, "Link to Website (Optional)", class: "control-label" %>
     <%= text_input f, :link, class: "form-control" %>
     <%= error_tag f, :link %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, "Link to Image (Optional)", class: "control-label" %>
+    <%= text_input f, :img_url, class: "form-control" %>
+    <%= error_tag f, :img_url %>
   </div>
 
   <div class="form-group">
