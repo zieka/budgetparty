@@ -9,12 +9,13 @@ defmodule Budgetparty.Wants do
     field :financial_cost, :float, default: 0.00
     field :frequency, :string
     field :owner_id, :string
+    field :img_url, :string
 
     timestamps
   end
 
   @required_fields ~w(title time_cost financial_cost frequency owner_id)
-  @optional_fields ~w(description link)
+  @optional_fields ~w(description link img_url)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
