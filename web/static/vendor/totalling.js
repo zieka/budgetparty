@@ -8,7 +8,7 @@ function total_per_month(cost_col,total_col) {
             // console.log(cost)
         }
         var freq = $(this).find('.frequency').text();
-        console.log("freq: " + freq);
+        // console.log("freq: " + freq);
         switch(true) {
           case (freq.indexOf("Monthly") !=-1):
               freq = 1;
@@ -28,7 +28,7 @@ function total_per_month(cost_col,total_col) {
           default:
               freq = 1;
         }
-        console.log("freq: " + freq);
+        // console.log("freq: " + freq);
         row_cost = row_cost + (cost*freq);
     });
 return $(total_col).text(row_cost.toFixed(2));

@@ -1,5 +1,5 @@
 <h2>Your Wants</h2>
-
+<div class="table-responsive">
 <table class="table">
   <thead>
     <tr>
@@ -20,7 +20,6 @@
       <td class='frequency'><%= wants.frequency %></td>
 
       <td class="text-right">
-        <%= link "Details", to: wants_path(@conn, :show, wants), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: wants_path(@conn, :edit, wants), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: wants_path(@conn, :delete, wants), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
@@ -35,7 +34,7 @@
   </tfoot>
 
 </table>
-
+</div>
 <%= link "Add a new Want", to: wants_path(@conn, :new), class: "btn btn-default"  %>
 
 <script src="<%= static_path(@conn, "/js/jquery.min.js") %>"></script>

@@ -68,7 +68,7 @@
             <tr>
               <td>
                 <%= if needs.img_url do %>
-                  <a href="<%= needs.link %>" ><img src="<%= needs.img_url %>" style="height: 40px;"%></a>
+                  <a href="<%= needs.link %>" ><img src="<%= needs.img_url %>" style="height: 30px;"%></a>
                 <%= else %>
                 <%= link needs.title, to: needs_path(@conn, :show, needs)%>
                 <%end%>
@@ -102,7 +102,7 @@
               <tr>
                 <td>
                   <%= if wants.link do %>
-                  <a href="<%= wants.link %>" ><img src="<%= wants.img_url %>" style="height: 40px;"%></a>
+                  <a href="<%= wants.link %>" ><img src="<%= wants.img_url %>" style="height: 30px;"%></a>
                   <%= else %>
                   <%= link wants.title, to: wants_path(@conn, :show, wants)%>
                   <% end %>
