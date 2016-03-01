@@ -64,7 +64,7 @@
 <%= for needs <- @needs do %>
 
 
-<div class=" item masonry-brick">
+<div class="item masonry-brick">
   <div class="picture">
   <%= if needs.link do %>
     <a class="image" title="<%= needs.title %>" href="<%= needs.link %>">
@@ -165,5 +165,8 @@
 </div>
 
 
+<footer id="footer"></footer>
+
+<!-- <script src="/js/jquery.min.js"></script>
 <script src="/js/jquery.masonry.min.js"></script>
-<script src="/js/script.js"></script>
+<script src="/js/script.js"></script> -->
