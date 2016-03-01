@@ -12,6 +12,7 @@
     <title>Dashboard Template for Bootstrap</title>
 <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 <link rel="stylesheet" href="/css/dashboard.css">
+
   </head>
   <body style="
 <%#     background: #A3CACC; %>

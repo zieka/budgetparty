@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/testing.css">
+
 <div class="row placeholders">
   <div class="col-xs-6 col-sm-6 placeholder">
     <h1 class="needs-count"><%= @needs_count %></h1>
@@ -55,32 +57,52 @@
     <div class="col-lg-6">
       <h3><%= link "Your Needs", to: needs_path(@conn, :index) %></h3>
 
+        <div class="wrapper">
+      		<div id="main">
+      			<div id="items" class="row-fluid">
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= for needs <- @needs do %>
-            <tr>
-              <td>
-                <%= if needs.img_url do %>
-                  <a href="<%= needs.link %>" ><img src="<%= needs.img_url %>" style="height: 30px;"%></a>
-                <%= else %>
-                <%= link needs.title, to: needs_path(@conn, :show, needs)%>
-                <%end%>
-              </td>
-              <td class="text-right">
-                <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
-                  <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-              </td>
-            </tr>
-            <% end %>
-        </tbody>
-      </table>
+<%= for needs <- @needs do %>
+
+
+<div class=" item masonry-brick">
+  <div class="picture">
+  <%= if needs.link do %>
+    <a class="image" title="<%= needs.title %>" href="<%= needs.link %>">
+  <%= else %>
+    <a class="image" title="<%= needs.title %>" href="/needs">
+  <% end %>
+    <%= if needs.img_url do %>
+         <img src="<%= needs.img_url %>" />
+      <%= else %>
+         <img scr="http://dummyimage.com/600x400" />
+      <%end%>
+    </a>
+    <div class="item-content">
+      <div class="description">
+        <p> <%= needs.title %></p>
+        <p>
+          $ <%=Float.to_string needs.financial_cost, [decimals: 2]%> <%= needs.frequency %>
+        </p>
+      </div>
+      <div class="meta">
+        <span>
+          <%= link "Edit", to: needs_path(@conn, :edit, needs), class: "btn btn-default btn-xs" %>
+        </span>
+        <span>
+            <%= link "Delete", to: needs_path(@conn, :delete, needs), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%end%>
+
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+
       <%= link "Add a new Need", to: needs_path(@conn, :new), class: "btn btn-default btn-small" %>
     </div>
 
@@ -88,35 +110,60 @@
     <%# Wants list %>
 
       <div class="col-lg-6">
+
         <h3><%= link "Your Wants", to: wants_path(@conn, :index) %></h3>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= for wants <- @wants do %>
-              <tr>
-                <td>
-                  <%= if wants.link do %>
-                  <a href="<%= wants.link %>" ><img src="<%= wants.img_url %>" style="height: 30px;"%></a>
-                  <%= else %>
-                  <%= link wants.title, to: wants_path(@conn, :show, wants)%>
-                  <% end %>
-                </td>
-                <td class="text-right">
-                  <%= link "Edit", to: wants_path(@conn, :edit, wants), class: "btn btn-default btn-xs" %>
-                  <%= link "Delete", to: wants_path(@conn, :delete, wants), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-                </td>
-              </tr>
-              <% end %>
-          </tbody>
-        </table>
+          <div class="wrapper">
+            <div id="main">
+              <div id="items" class="row-fluid">
+
+        <%= for wants <- @wants do %>
+
+
+        <div class=" item masonry-brick">
+        <div class="picture">
+        <%= if wants.link do %>
+        <a class="image" title="<%= wants.title %>" href="<%= wants.link %>">
+        <%= else %>
+        <a class="image" title="<%= wants.title %>" href="/wants">
+        <% end %>
+        <%= if wants.img_url do %>
+           <img src="<%= wants.img_url %>" />
+        <%= else %>
+           <img scr="http://dummyimage.com/600x400" />
+        <%end%>
+        </a>
+        <div class="item-content">
+        <div class="description">
+          <p> <%= wants.title %></p>
+          <p>
+            $ <%=Float.to_string wants.financial_cost, [decimals: 2]%> <%= wants.frequency %>
+          </p>
+        </div>
+        <div class="meta">
+          <span>
+            <%= link "Edit", to: wants_path(@conn, :edit, wants), class: "btn btn-default btn-xs" %>
+          </span>
+          <span>
+              <%= link "Delete", to: wants_path(@conn, :delete, wants), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+          </span>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        <%end%>
+
+        </div>
+        <div class="clearfix"></div>
+        </div>
+        </div>
 
         <%= link "Add a new Want", to: wants_path(@conn, :new), class: "btn btn-default btn-small"  %>
 
       </div>
 </div>
+
+
+<script src="/js/jquery.masonry.min.js"></script>
+<script src="/js/script.js"></script>
