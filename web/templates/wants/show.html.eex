@@ -1,4 +1,5 @@
-<h2>Details on Want</h2>
+<%= if current_user(@conn).email == @wants.owner_id do %>
+<h2><%= @wants.title %> Details</h2>
 
 <ul class="list-unstyled" style="text-align: left;">
 
@@ -24,12 +25,12 @@
 
   <li>
     <strong>Time cost:</strong>
-    <%= @wants.time_cost %>
+    <%= Float.to_string @wants.time_cost , [decimals: 2] %>
   </li>
 
   <li>
     <strong>Financial cost:</strong>
-    <%= @wants.financial_cost %>
+    <%= Float.to_string @wants.financial_cost, [decimals: 2] %>
   </li>
 
   <li>
@@ -45,6 +46,10 @@
 
 <%= link "Edit", to: wants_path(@conn, :edit, @wants) %>
 <%= link "Back", to: wants_path(@conn, :index) %>
+
+<% else %>
+  <h2>Don't be evil.</h2>
+<% end %>
 
 <script src="<%= static_path(@conn, "/js/jquery.min.js") %>"></script>
 <script type="text/javascript">

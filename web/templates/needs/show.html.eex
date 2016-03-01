@@ -31,12 +31,12 @@
 
   <li>
     <strong>Time cost:</strong>
-    <%= @needs.time_cost %>
+    <%= Float.to_string @needs.time_cost , [decimals: 2] %>
   </li>
 
   <li>
     <strong>Financial cost:</strong>
-    <%= @needs.financial_cost %>
+    <%= Float.to_string @needs.financial_cost, [decimals: 2] %>
   </li>
 
   <li>
