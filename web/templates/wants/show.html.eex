@@ -1,6 +1,6 @@
 <h2>Details on Want</h2>
 
-<ul>
+<ul class="list-unstyled" style="text-align: left;">
 
   <li>
     <strong>Title:</strong>
@@ -15,6 +15,11 @@
   <li>
     <strong>Link:</strong>
     <%= @wants.link %>
+    <%= if @wants.img_url do %>
+    </br>
+    <img src="<%= @wants.img_url %>" style="height: 100px;"%>
+    </br>
+    <% end %>
   </li>
 
   <li>

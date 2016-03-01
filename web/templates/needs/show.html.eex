@@ -1,7 +1,8 @@
 <%= if current_user(@conn).email == @needs.owner_id do %>
-<h2>Details on Need</h2>
 
-<ul>
+<h2><%= @needs.title %> Details</h2>
+
+<ul class="list-unstyled" style="text-align: left;">
 
   <li>
     <strong>Title:</strong>
@@ -16,6 +17,16 @@
   <li>
     <strong>Link:</strong>
     <%= @needs.link %>
+  </li>
+
+  <li>
+    <strong>Image:</strong>
+    <%= @needs.img_url %>
+    <%= if @needs.img_url do %>
+    </br>
+    <img src="<%= @needs.img_url %>" style="height: 100px;"%>
+    </br>
+    <% end %>
   </li>
 
   <li>
