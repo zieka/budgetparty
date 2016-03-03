@@ -82,7 +82,7 @@
 
   var request = new XMLHttpRequest();
 
-  request.open('GET', 'http://fortunecookieapi.com/v1/fortunes?limit=1&skip='+ getRandomInt(1,500));
+  request.open('GET', 'https://fortunecookieapi.com/v1/fortunes?limit=1&skip='+ getRandomInt(1,500));
 
   request.onreadystatechange = function () {
     if (this.readyState === 4) {
