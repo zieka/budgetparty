@@ -9,7 +9,7 @@
     <meta name="zieka" content="">
     <link rel="icon" href="/images/BPicon.png">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Budget Party</title>
 <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 <link rel="stylesheet" href="/css/dashboard.css">
 
